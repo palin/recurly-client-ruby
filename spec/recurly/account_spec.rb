@@ -43,6 +43,7 @@ describe Account do
       account.address.zip.must_equal '94105'
       account.address.phone.must_equal '8015551234'
       account.address.country.must_equal 'US'
+      account.tax_exempt?.must_equal true
     end
 
     it "must raise an exception when unavailable" do
@@ -107,7 +108,6 @@ XML
   end
 
   describe 'serialize address to xml' do
-
     it "must serialize" do
       account = Account.new :account_code => 'code'
       account.vat_number = '12345-67'
@@ -120,7 +120,6 @@ XML
       account.address = address
       account.to_xml.must_equal get_raw_xml("accounts/address-serialized.xml")
     end
-
   end
 
   describe "#to_xml" do
